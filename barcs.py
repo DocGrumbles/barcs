@@ -11,7 +11,8 @@ URL2 = "https://ws.petango.com/webservices/adoptablesearch/wsAdoptableAnimals2.a
 
 headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36'}
 
-save_path = 'C:/Users/Ben/Documents/Python'
+# Path where project is saved
+save_path = 'PYTHON FOLDER'
 barcs = os.path.join(save_path, "barcs.txt")
 # Add your Twilio Account Number Below*
 account = '*TWILIO ACCOUNT NUMBER'
@@ -23,7 +24,6 @@ def get_source():
 
     soup1 = BeautifulSoup(page.content, 'html.parser') # this is a class object
     soup_string = str(soup1)
-    #ahref_remove = re.sub(r'<a href(.*?)>', '')
     clean_txt = re.sub(r'<a href(.*?)>', '', soup_string)
    
     if os.path.exists(barcs):
@@ -68,7 +68,7 @@ def send_sms():
     client = Client(account, token)
 
     try:
-        client.messages.create(to = "*REVEIVER NUMBER*", 
+        client.messages.create(to = "*RECEIVER NUMBER*", 
                                 from_="*TWILIO SENDER NUMBER*", #Twilio account number
                                 body = 'Hello! Either a Corgi or a Basset Hound has been identified on the barcs website!' 
                                 )
